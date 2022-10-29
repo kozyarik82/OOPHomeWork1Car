@@ -1,3 +1,5 @@
+import transport.Car;
+
 import java.time.LocalDate;
 
 public class Human {
@@ -63,4 +65,6 @@ public class Human {
     public String toString() {
         return "Привет! Меня зовут " + name + ", мне " + getAgeInYears() + " лет, я из города " + town + ", работаю на должности " + job;
     }
+
+
 }

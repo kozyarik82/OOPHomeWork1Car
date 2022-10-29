@@ -2,13 +2,9 @@ package transport;
 
 import java.time.LocalDate;
 
-public class Car {
-    private final String brand;
-    private final String model;
+public class Car extends Transport {
+
     private float engineVolume;
-    private String color;
-    private final int productionYear;
-    private final String productionCountry;
     private String transmission;
     private  final String bodyType;
     private String regNumber;
@@ -18,13 +14,9 @@ public class Car {
     private final Insurance insurance;
 
 
-    public Car(String brand, String model,  String color, int productionYear, String productionCountry,float engineVolume,String transmission,String bodyType,String regNumber,int seatsCount,boolean winterTires,Key key,Insurance insurance) {
-        this.brand = validOrDefault(brand, DEFAULT_STRING_VALUE);
-        this.model = validOrDefault(model, DEFAULT_STRING_VALUE);
+    public Car(String brand, String model, String color,  int productionYear, String productionCountry,float engineVolume,String transmission,String bodyType,String regNumber,int seatsCount,boolean winterTires,Key key,Insurance insurance) {
+        super(brand, model, productionYear, productionCountry, color,100);
         setEngineVolume(engineVolume);
-        setColor(color);
-        this.productionCountry = validOrDefault(productionCountry, DEFAULT_STRING_VALUE);
-        this.productionYear = productionYear >= 0 ? productionYear : 2000;
         setTransmission(transmission);
         this.bodyType = validOrDefault(bodyType, DEFAULT_STRING_VALUE);
         setRegNumber(regNumber);
@@ -60,6 +52,11 @@ public class Car {
                 ", seatsCount=" + seatsCount +
                 ", winterTires=" + winterTires +
                 '}';
+    }
+
+    @Override
+    public void refill() {
+        System.out.println(" Можно заправить беезином, дизелем на заправке или заряжать на специальных электропарковках, если это электрокар ");
     }
 
     public void setSeasonTires() {
@@ -182,8 +179,8 @@ public class Car {
         public Insurance(LocalDate validUntil, float cost, String number) {
             this.validUntil = validUntil != null ? validUntil : LocalDate.now().plusDays(10);
             this.cost = Math.max(cost, 1f);
-            this.number = number;
-            }
+            this.number = number!=null ? number:"default";
+        }
 
         public boolean isNumberValid() {
             return number.length() == 9;
