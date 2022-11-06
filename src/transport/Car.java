@@ -1,13 +1,24 @@
 package transport;
 
-import java.sql.SQLOutput;
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 public class Car extends Transport implements Competing {
+    private final BodyType bodyType;
 
-    public Car(String brand, String model, float engineVolume) {
+    public enum BodyType{
+        sedan("седан"),hatchback("хетчбек"),coupe("купе"),universal("универсал"),suv("внедорожник"),
+        crossover("кроссовер"),pickup("пикап"),van("фургон"), minivan("минивен");
+        private final String name;
+
+        public String getName() {
+            return this.name;
+        }
+
+        BodyType(String name) {
+            this.name = name;
+        }
+    }
+    public Car(String brand, String model, float engineVolume,BodyType bodyType) {
         super(brand, model, engineVolume);
+        this.bodyType = bodyType;
     }
 
     @Override
@@ -18,6 +29,15 @@ public class Car extends Transport implements Competing {
     @Override
     public void finishTheMove() {
         System.out.println("finish");
+    }
+
+    @Override
+    public void printType() {
+        if (this.bodyType != null) {
+            System.out.println(bodyType);
+        }else{
+            System.out.println("Информации не достаточно");
+        }
     }
 
     @Override

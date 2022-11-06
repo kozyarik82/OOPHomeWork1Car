@@ -4,10 +4,6 @@ import transport.Transport;
 import transport.Truck;
 //import transport.Train;
 
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -49,18 +45,18 @@ public class Main {
 //
 //        System.out.println(huyndai);
 //        bmw.refill();
-        Bus bmw = new Bus("BMW", "GTM-5", 2.5f);
-        Bus mercedes = new Bus("Mercedes", "RH", 3);
-        Bus scania = new Bus("Scania", "Touring", 6);
-        Bus yutong = new Bus("Yutong", "ZK6122H9", 5.5f);
-        Truck man = new Truck("MAN", "AG", 3.8f);
-        Truck volvo = new Truck("Volvo", "V-275", 4);
-        Truck hino = new Truck("HINO", "AKM", 15);
-        Truck iveco = new Truck("IVECO", "A-22", 13.2f);
-        Car ford = new Car("Ford", "RS200", 10.2f);
-        Car toyota = new Car("Toyota", "Celica 1600GT", 5);
-        Car bugatti = new Car("Bugatti", "Veyron", 16.4f);
-        Car ferrari = new Car("Ferrari", "FF", 6.2f);
+        Bus bmw = new Bus("BMW", "GTM-5", 2.5f, Bus.PassengerCapacity.extraSmall);
+        Bus mercedes = new Bus("Mercedes", "RH", 3, Bus.PassengerCapacity.small);
+        Bus scania = new Bus("Scania", "Touring", 6, Bus.PassengerCapacity.large);
+        Bus yutong = new Bus("Yutong", "ZK6122H9", 5.5f, Bus.PassengerCapacity.medium);
+        Truck man = new Truck("MAN", "AG", 3.8f, Truck.LoadCapacity.N1);
+        Truck volvo = new Truck("Volvo", "V-275", 4, Truck.LoadCapacity.N3);
+        Truck hino = new Truck("HINO", "AKM", 15, Truck.LoadCapacity.N2);
+        Truck iveco = new Truck("IVECO", "A-22", 13.2f, Truck.LoadCapacity.N3);
+        Car ford = new Car("Ford", "RS200", 10.2f, Car.BodyType.sedan);
+        Car toyota = new Car("Toyota", "Celica 1600GT", 5, Car.BodyType.hatchback);
+        Car bugatti = new Car("Bugatti", "Veyron", 16.4f, Car.BodyType.coupe);
+        Car ferrari = new Car("Ferrari", "FF", 6.2f, Car.BodyType.coupe);
         System.out.println(bmw);
         System.out.println(man);
         System.out.println(ford);
@@ -74,5 +70,9 @@ public class Main {
         System.out.println(" Водитель " + stepanov.getFullName() + " управляет автомобилем " + ferrari.getBrand() + " и будет участвовать в заезде ");
         System.out.println(" Водитель " + rapaport.getFullName() + " управляет автомобилем " + hino.getBrand() + " и будет участвовать в заезде ");
         System.out.println(" Водитель " + hvostik.getFullName() + " управляет автомобилем " + scania.getBrand() + " и будет участвовать в заезде ");
+        yutong.printType();
+
+
+
     }
 }

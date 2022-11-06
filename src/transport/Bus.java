@@ -1,10 +1,37 @@
 package transport;
-
-import java.time.LocalTime;
-
 public class Bus extends Transport implements Competing {
-    public Bus(String brand, String model, float engineVolume) {
+    public enum PassengerCapacity{
+        extraSmall(0,10),small(0,25),medium(40,50),
+        large(60,80),extraLarge(100,120);
+
+        private final int capacityFrom;
+        private final int capacityTo;
+
+        public int getCapacityFrom() {
+            return capacityFrom;
+        }
+
+        public int getCapacityTo() {
+            return capacityTo;
+        }
+
+        PassengerCapacity(int capacityFrom,int capacityTo) {
+            this.capacityFrom = capacityFrom;
+            this.capacityTo = capacityTo;
+        }
+
+        @Override
+        public String toString() {
+            String capacity = capacityFrom > 0 ? capacityFrom + "-" + capacityTo : String.valueOf(capacityTo);
+            return "Вместимость:" + name() +  capacity + "мест";
+        }
+    }
+
+    private final PassengerCapacity passengerCapacity;
+
+    public Bus(String brand, String model, float engineVolume,PassengerCapacity passengerCapacity) {
         super(brand, model, engineVolume);
+        this.passengerCapacity = passengerCapacity;
     }
 
     @Override
@@ -15,6 +42,15 @@ public class Bus extends Transport implements Competing {
     @Override
     public void finishTheMove() {
         System.out.println("finish");
+    }
+
+    @Override
+    public void printType() {
+        if (this.passengerCapacity != null) {
+            System.out.println(passengerCapacity);
+        }else{
+            System.out.println("Информации недостаточно");
+        }
     }
 
     @Override

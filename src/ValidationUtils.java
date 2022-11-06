@@ -1,5 +1,5 @@
 public class ValidationUtils {
-    protected static String validOrDefault(String value, String defaultValue) {
+    public static String validOrDefault(String value, String defaultValue) {
         if (value == null || value.isBlank()) {
             return defaultValue;
         }else{
