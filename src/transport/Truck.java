@@ -55,6 +55,11 @@ public class Truck extends Transport implements Competing{
         }
     }
 
+    @Override
+    public boolean getDiagnosed() {
+        return Math.random()>0.7;
+    }
+
 
     @Override
     public void pitStop() {

@@ -41,6 +41,11 @@ public class Car extends Transport implements Competing {
     }
 
     @Override
+    public boolean getDiagnosed() {
+        return Math.random()>0.5;
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("Пора сделать пит-стоп");
     }

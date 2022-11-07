@@ -71,8 +71,28 @@ public class Main {
         System.out.println(" Водитель " + rapaport.getFullName() + " управляет автомобилем " + hino.getBrand() + " и будет участвовать в заезде ");
         System.out.println(" Водитель " + hvostik.getFullName() + " управляет автомобилем " + scania.getBrand() + " и будет участвовать в заезде ");
         yutong.printType();
+        boolean success = Data.validate("login", "password", "password");
+        if (success) {
+            System.out.println("Данные валидны");
+        }else{
+            System.out.println("Данные не валидны");
+        }
+        getDiagnosed(bmw,mercedes,scania,yutong,man,volvo,hino,iveco,ford,toyota,bugatti,ferrari);
+    }
 
+    private static void getDiagnosed(Transport... transports) {
+        for (Transport transport : transports) {
+            diagnosedTransport(transport);
+        }
+    }
 
-
+    private static void diagnosedTransport(Transport transport) {
+        try {
+            if (!transport.getDiagnosed()) {
+                throw new RuntimeException(" Автомобилю " + transport.getBrand() + transport.getModel() + " необходимо срочно пройти диагностику ");
+            }
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

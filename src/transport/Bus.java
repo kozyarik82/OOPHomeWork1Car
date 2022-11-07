@@ -49,8 +49,14 @@ public class Bus extends Transport implements Competing {
         if (this.passengerCapacity != null) {
             System.out.println(passengerCapacity);
         }else{
-            System.out.println("Информации недостаточно");
+            System.out.println(" Информации недостаточно ");
         }
+    }
+
+    @Override
+    public boolean getDiagnosed() {
+        System.out.println(" Автобусу " + getBrand() + " " + getModel() + " диагностика не требуется ");
+        return true;
     }
 
     @Override

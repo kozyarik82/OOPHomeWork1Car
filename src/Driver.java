@@ -30,7 +30,11 @@ public  class Driver<A extends Transport & Competing> {
     }
 
     public void setDrivingLicence(String drivingLicence) {
-        this.drivingLicence = ValidationUtils.validOrDefault(drivingLicence, "default");
+        if (drivingLicence == null) {
+            throw new IllegalArgumentException("Необходимо указать категорию водительского удостоверения");
+        }else{
+            this.drivingLicence = drivingLicence;
+        }
     }
 
     public  void startDrivingCar(){
