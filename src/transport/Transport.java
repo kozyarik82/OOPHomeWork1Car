@@ -1,55 +1,59 @@
 package transport;
 
+
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public abstract class Transport {
     protected final String brand;
-    protected  final String model;
+    protected final String model;
 
     protected final float engineVolume;
+    private final List<Driver<?>> drivers = new ArrayList<>();
+    private final List<Mechanic<?>> mechanics = new ArrayList<>();
+    private final List<Sponsor> sponsors = new ArrayList<>();
 
-//    protected final int productionYear;
-//    protected final String productionCountry;
-//    protected String color;
-//    protected int maxSpeed;
 
     public Transport(String brand, String model, float engineVolume) {
-        this.brand = ValidationUtils.validOrDefault(brand,DEFAULT_STRING_VALUE);
-        this.model = ValidationUtils.validOrDefault(model,DEFAULT_STRING_VALUE);
-        this.engineVolume = engineVolume>0.0f ? engineVolume:1.5f;
+        this.brand = ValidationUtils.validOrDefault(brand, DEFAULT_STRING_VALUE);
+        this.model = ValidationUtils.validOrDefault(model, DEFAULT_STRING_VALUE);
+        this.engineVolume = engineVolume > 0.0f ? engineVolume : 1.5f;
     }
-
-
-//    public Transport(String brand, String model, int productionYear, String productionCountry, String color, int maxSpeed) {
-////        setBrand(brand);
-////        setModel(model);
-////        this.productionYear = productionYear >= 0 ? productionYear : 2000;
-////        this.productionCountry = ValidationUtils.validOrDefault(productionCountry,DEFAULT_STRING_VALUE);
-////        setColor(color);
-////        this.maxSpeed = maxSpeed;
-//    }
-
-//    public int getProductionYear() {
-//        return productionYear;
-//    }
-//
-//    public String getProductionCountry() {
-//        return productionCountry;
-//    }
-
     public static final String DEFAULT_STRING_VALUE = "default";
 
     public float getEngineVolume() {
         return engineVolume;
     }
 
-    public String getBrand() { return brand; }
-
-//    public void setBrand(String brand) {
-//
-//        this.brand = ValidationUtils.validOrDefault(brand,DEFAULT_STRING_VALUE);
-//    }
+    public String getBrand() {
+        return brand;
+    }
 
     public String getModel() {
         return model;
+    }
+
+    public void addDriver(Driver<?>... drivers){this.drivers.addAll(Arrays.asList(drivers));}
+    public void addMechanic(Mechanic<?>... mechanics) {
+        this.mechanics.addAll(Arrays.asList(mechanics));
+    }
+    public void addSponsor(Sponsor... sponsors) {
+        this.sponsors.addAll(Arrays.asList(sponsors));
+    }
+
+    public List<Driver<?>> getDrivers() {
+        return drivers;
+    }
+
+    public List<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
+
+    public List<Sponsor> getSponsors() {
+        return sponsors;
     }
 
     public abstract void startMoving();
@@ -60,6 +64,8 @@ public abstract class Transport {
 
     public abstract boolean getDiagnosed();
 
+    public abstract void repair();
+
     @Override
     public String toString() {
         return "Transport{" +
@@ -69,37 +75,4 @@ public abstract class Transport {
                 '}';
     }
 
-    //    public void setModel(String model) {
-//        this.model = ValidationUtils.validOrDefault(model,DEFAULT_STRING_VALUE);
-//    }
-
-//    public String getColor() {
-//        return color;
-//    }
-//
-//    public void setColor(String color) {
-//        this.color = ValidationUtils.validOrDefault(color,DEFAULT_STRING_VALUE);
-//    }
-//
-//    public int getMaxSpeed() {
-//        return maxSpeed;
-//    }
-//
-//    public void setMaxSpeed(int maxSpeed) {
-//        this.maxSpeed = maxSpeed>0 ? maxSpeed:1;
-//    }
-
-//    @Override
-//    public String toString() {
-//        return "Transport{" +
-//                "brand='" + brand + '\'' +
-//                ", model='" + model + '\'' +
-//                ", productionYear=" + productionYear +
-//                ", productionCountry='" + productionCountry + '\'' +
-//                ", color='" + color + '\'' +
-//                ", maxSpeed=" + maxSpeed +
-//                '}';
-//    }
-//
-//    public abstract void refill();
 }

@@ -3,19 +3,6 @@ package transport;
 public class Car extends Transport implements Competing {
     private final BodyType bodyType;
 
-    public enum BodyType{
-        sedan("седан"),hatchback("хетчбек"),coupe("купе"),universal("универсал"),suv("внедорожник"),
-        crossover("кроссовер"),pickup("пикап"),van("фургон"), minivan("минивен");
-        private final String name;
-
-        public String getName() {
-            return this.name;
-        }
-
-        BodyType(String name) {
-            this.name = name;
-        }
-    }
     public Car(String brand, String model, float engineVolume,BodyType bodyType) {
         super(brand, model, engineVolume);
         this.bodyType = bodyType;
@@ -23,12 +10,12 @@ public class Car extends Transport implements Competing {
 
     @Override
     public void startMoving() {
-        System.out.println("start");
+        System.out.println(" Автомобиль " + getBrand() + " " +getModel() + " начинает движение ");
     }
 
     @Override
     public void finishTheMove() {
-        System.out.println("finish");
+        System.out.println(" Автомобиль " + getBrand() + " " + getModel() + " заканчивает движение ");
     }
 
     @Override
@@ -43,6 +30,11 @@ public class Car extends Transport implements Competing {
     @Override
     public boolean getDiagnosed() {
         return Math.random()>0.5;
+    }
+
+    @Override
+    public void repair() {
+        System.out.println(" Автомобиль " + getBrand() + " " + getModel() + " отремонтирована ");
     }
 
     @Override
