@@ -3,18 +3,16 @@ package transport;
 
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public abstract class Transport {
     protected final String brand;
     protected final String model;
 
     protected final float engineVolume;
-    private final List<Driver<?>> drivers = new ArrayList<>();
-    private final List<Mechanic<?>> mechanics = new ArrayList<>();
-    private final List<Sponsor> sponsors = new ArrayList<>();
+    private final Set<Driver<?>> drivers = new HashSet<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
+    private final Set<Sponsor> sponsors = new HashSet<>();
 
 
     public Transport(String brand, String model, float engineVolume) {
@@ -36,23 +34,28 @@ public abstract class Transport {
         return model;
     }
 
-    public void addDriver(Driver<?>... drivers){this.drivers.addAll(Arrays.asList(drivers));}
+    public void addDriver(Driver<?>... drivers){
+        this.drivers.addAll(Set.of(drivers));
+        System.out.println("Список без повторов");
+    }
     public void addMechanic(Mechanic<?>... mechanics) {
-        this.mechanics.addAll(Arrays.asList(mechanics));
+        this.mechanics.addAll(Set.of(mechanics));
+        System.out.println("Список без повторов");
     }
     public void addSponsor(Sponsor... sponsors) {
-        this.sponsors.addAll(Arrays.asList(sponsors));
+        this.sponsors.addAll(Set.of(sponsors));
+        System.out.println("Список без повторов");
     }
 
-    public List<Driver<?>> getDrivers() {
+    public Set<Driver<?>> getDrivers() {
         return drivers;
     }
 
-    public List<Mechanic<?>> getMechanics() {
+    public Set<Mechanic<?>> getMechanics() {
         return mechanics;
     }
 
-    public List<Sponsor> getSponsors() {
+    public Set<Sponsor> getSponsors() {
         return sponsors;
     }
 

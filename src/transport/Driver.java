@@ -10,8 +10,6 @@ public abstract class Driver<A extends Transport> {
     private final float experience;
     private final A car;
 
-
-
     protected Driver(String fullName, String drivingLicence, float experience,A car) {
         this.fullName = ValidationUtils.validOrDefault(fullName,"default");
         this.drivingLicence = drivingLicence;
@@ -45,12 +43,6 @@ public abstract class Driver<A extends Transport> {
         System.out.println(" Водитель " + getFullName() + " заправляет транспортное средство " + this.car.getBrand() + " " + this.car.getModel());
 
     }
-
-//    @Override
-////    public String toString() {
-////        return String.format("Водитель %s управляет транспортным средством %s %s и будет учавствовать в заезде ", this.fullName, this.car.getBrand(), this.car.getModel());
-////    }
-//
 
     @Override
     public String toString() {

@@ -1,6 +1,8 @@
 import transport.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 //import transport.Train;
 
 public class Main {
@@ -31,9 +33,9 @@ public class Main {
         DriverCatD stepanov = new DriverCatD("Степанов Андрей Романович","D",15f,scania);
         DriverCatD hvostik = new DriverCatD("Хвостик Антон Михайлович", "D", 7f,bmw);
         List<Transport> transports = List.of(bmw, mercedes, scania, yutong, man, volvo, hino, iveco, ford, toyota, bugatti, ferrari);
-        List<Driver> drivers = List.of(rogov, romov, somov, rapaport, stepanov, hvostik);
-        List<Mechanic> mechanics = List.of(sokolov, steklov, pupkin);
-        List<Sponsor> sponsors = List.of(ivanov, kolob);
+        Set<Driver> drivers = Set.of(rogov, romov, somov, rapaport, stepanov, hvostik);
+        Set<Mechanic> mechanics = Set.of(sokolov, steklov, pupkin);
+        Set<Sponsor> sponsors = Set.of(ivanov, kolob);
         ford.addDriver(somov);
         ford.addSponsor(kolob,ivanov);
         ford.addMechanic(sokolov);
