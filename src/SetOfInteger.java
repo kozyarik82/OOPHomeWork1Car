@@ -7,14 +7,12 @@ public class SetOfInteger {
     public static void main(String[] args) {
 
         Random random = new Random();
-        Set<Integer> numbers = new HashSet<>(20);
-        for (int i=0;i<1000;i++) {
+        Set<Integer> numbers = new HashSet<>();
+
+        while (numbers.size() <= 20) {
             numbers.add(random.nextInt(1000));
-            if (numbers.size() == 20) {
-                break;
-            }
         }
-        Iterator<Integer> iter = numbers.iterator();
+   Iterator<Integer> iter = numbers.iterator();
         while (iter.hasNext()) {
             Integer oddNumber = iter.next();
             if (oddNumber % 2 == 1) {

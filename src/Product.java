@@ -7,7 +7,7 @@ public class Product {
     private String title;
     private float price;
     private float weight;
-    private Boolean isBought;
+    private boolean isBought;
 
     public Product(String title, float price, float weight) {
         setPrice(price);
@@ -51,11 +51,11 @@ public class Product {
         }
     }
 
-    public Boolean getBought() {
+    public boolean getBought() {
         return isBought;
     }
 
-    public void setBought(Boolean bought) {
+    public void setBought(boolean bought) {
         isBought = bought;
     }
 
@@ -73,7 +73,7 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Float.compare(product.price, price) == 0 && Float.compare(product.weight, weight) == 0 && title.equals(product.title) && isBought.equals(product.isBought);
+        return Float.compare(product.price, price) == 0 && Float.compare(product.weight, weight) == 0 && isBought == product.isBought && Objects.equals(title, product.title);
     }
 
     @Override

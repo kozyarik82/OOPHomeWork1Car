@@ -1,13 +1,9 @@
 import transport.*;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-//import transport.Train;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-
 
         Bus bmw = new Bus(" BMW ",  " GTM-5 ", 2.5f, PassengerCapacity.small);
         Bus mercedes = new Bus(" Mercedes ", " RH ", 3, PassengerCapacity.medium);
@@ -62,6 +58,42 @@ public class Main {
             System.out.println("Данные не валидны");
         }
         getDiagnosed(bmw,mercedes,scania,yutong,man,volvo,hino,iveco,ford,toyota,bugatti,ferrari);
+
+        Product banana = new Product("банан", 150f, 2.1f);
+        Product lemon = new Product("лимон", 58.5f, 0.5f);
+        Product bread = new Product("хлеб", 45f, 0.7f);
+        Product milk = new Product("молоко", 55f, 0.5f);
+        ProductList.addProduct(new Product( "хлеб",2f,2f));
+        ProductList.addProduct(new Product("яйца",2f,0.2f));
+        ProductList.addProduct(new Product("рыба", 125f, 2.1f));
+
+        ProductList.addProduct(banana);
+        ProductList.addProduct(lemon);
+        ProductList.deleteProduct(lemon);
+        ProductList.markAsBought(banana);
+        System.out.println(ProductList.getProducts());
+        System.out.println(banana.getPrice());
+        Recipe salat = new Recipe("салат", ProductList.getProducts(),2);
+        Recipe borsch = new Recipe("борщь", ProductList.getProducts(),3);
+        HashMap<Recipe,Integer> recipes = new HashMap<>();
+        recipes.put(salat,2);
+        recipes.put(borsch,3);
+        System.out.println(recipes);
+        System.out.println(salat.calculatePrice());
+        System.out.println(borsch.calculatePrice());
+
+        Passport pupkov = new Passport(Collections.singleton(123456789), "Пупков", "Пупок", "29,09,99", null);
+        Passport jupkov = new Passport(Collections.singleton(987456321), "Жупков", "Жупок", "19,09,97", null);
+        Passport lubkov = new Passport(Collections.singleton(852147963), "Лубков", "Клубок", "01,02,20", null);
+        Set<Passport> passportSet = new HashSet<>();
+        passportSet.add(pupkov);
+        passportSet.add(jupkov);
+        passportSet.add(lubkov);
+        System.out.println("passportSet = " + passportSet);
+        System.out.println("findPassport(passportSet,123456789) = " + findPassport(passportSet, 123456789));
+
+        MultiplicationTable multiplicationTable = new MultiplicationTable();
+        System.out.print(multiplicationTable);
     }
 
     private static void printInfo(Transport transport) {
@@ -82,5 +114,13 @@ public class Main {
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
+    }
+    public static Passport findPassport(Set<Passport> passportSet, Integer number) {
+        for (Passport passport : passportSet) {
+            if (passport.isSetNumber(number)) {
+                return passport;
+            }
+        }
+        return null;
     }
 }
