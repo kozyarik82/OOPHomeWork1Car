@@ -63,18 +63,18 @@ public class Main {
         Product lemon = new Product("лимон", 58.5f, 0.5f);
         Product bread = new Product("хлеб", 45f, 0.7f);
         Product milk = new Product("молоко", 55f, 0.5f);
-        ProductList.addProduct(new Product( "хлеб",2f,2f));
-        ProductList.addProduct(new Product("яйца",2f,0.2f));
-        ProductList.addProduct(new Product("рыба", 125f, 2.1f));
+        Product.addProduct(new Product( "хлеб",2f,2f));
+        Product.addProduct(new Product("яйца",2f,0.2f));
+        Product.addProduct(new Product("рыба", 125f, 2.1f));
 
-        ProductList.addProduct(banana);
-        ProductList.addProduct(lemon);
-        ProductList.deleteProduct(lemon);
-        ProductList.markAsBought(banana);
-        System.out.println(ProductList.getProducts());
+        Product.addProduct(banana);
+        Product.addProduct(lemon);
+        Product.deleteProduct(lemon);
+        Product.markAsBought(banana);
+        System.out.println(Product.getProducts());
         System.out.println(banana.getPrice());
-        Recipe salat = new Recipe("салат", ProductList.getProducts(),2);
-        Recipe borsch = new Recipe("борщь", ProductList.getProducts(),3);
+        Recipe salat = new Recipe("салат", Product.getProducts(),2);
+        Recipe borsch = new Recipe("борщь", Product.getProducts(),3);
         HashMap<Recipe,Integer> recipes = new HashMap<>();
         recipes.put(salat,2);
         recipes.put(borsch,3);
