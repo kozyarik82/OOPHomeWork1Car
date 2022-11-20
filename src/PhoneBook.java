@@ -12,7 +12,7 @@ public class PhoneBook {
         phoneBook.put("Пушков Л.В", "+8574367895");
         phoneBook.put("Кружков О.Л", "+781254367895");
         phoneBook.put("Ляжков О.Л", "+35454367895");
-        System.out.println(phoneBook);
+        System.out.println(phoneBook.entrySet());
     }
     private final String fullName;
     private final String numberPhone;

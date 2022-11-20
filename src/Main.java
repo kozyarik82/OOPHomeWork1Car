@@ -81,7 +81,6 @@ public class Main {
         System.out.println(borsch.calculatePrice());
         System.out.println(salat.calculatePrice());
 
-
         Passport pupkov = new Passport(Collections.singleton(123456789), "Пупков", "Пупок", "29,09,99", null);
         Passport jupkov = new Passport(Collections.singleton(987456321), "Жупков", "Жупок", "19,09,97", null);
         Passport lubkov = new Passport(Collections.singleton(852147963), "Лубков", "Клубок", "01,02,20", null);
@@ -94,6 +93,29 @@ public class Main {
 
         MultiplicationTable multiplicationTable = new MultiplicationTable();
         System.out.print(multiplicationTable);
+        System.out.println();
+        Exercise3 exercise = new Exercise3();
+        exercise.addMap("str", 1);
+        exercise.addMap("str1", 2);
+        exercise.addMap("str1",3);
+        System.out.println(exercise);
+
+        MapCollection mapCollection = new MapCollection();
+        System.out.println(mapCollection.getMapTransformed());
+
+        Map<Integer, String> task2 = new LinkedHashMap<>();
+        task2.put(10, "велосипед");
+        task2.put(2, "лыжи");
+        task2.put(7, "ружье");
+        task2.put(15, "удочка");
+        task2.put(5, "палатка");
+        task2.put(3, "конделябр");
+        task2.put(11, "хлеб");
+        task2.put(8, "спички");
+        task2.put(9, "червяк");
+        task2.put(1, "весло");
+        System.out.println(task2);
+
     }
 
     private static void printInfo(Transport transport) {
