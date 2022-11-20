@@ -8,15 +8,16 @@ public class Recipe {
     private float totalCost;
     private Integer amount;
 
-    public Recipe(String recipeName, Set<Product> products) {
-        this(recipeName, products, 1);
+    public Recipe(String recipeName, Set<Product> products,float totalCost) {
+        this(recipeName, products, 1,totalCost);
 
     }
 
-    public Recipe(String recipeName, Set<Product> products, Integer amount) {
+    public Recipe(String recipeName, Set<Product> products, Integer amount,float totalCost) {
         this.recipeName = recipeName;
         this.products = products;
         this.amount = amount;
+        this.totalCost = calculatePrice();
     }
     public float calculatePrice() {
         float totalCoast = 0;
