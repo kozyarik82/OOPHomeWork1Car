@@ -78,6 +78,7 @@ public class Main {
         HashMap<Recipe,Integer> recipes = new HashMap<>();
         recipes.put(salat,2);
         recipes.put(borsch,3);
+        System.out.println(recipes);
         System.out.println(borsch.calculatePrice());
         System.out.println(salat.calculatePrice());
 

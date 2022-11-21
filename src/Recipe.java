@@ -3,10 +3,11 @@ import java.util.Objects;
 import java.util.Set;
 
 public class Recipe {
+    public static Set<Recipe> recipes = new HashSet<>();
     private final String recipeName;
     private Set<Product> products;
-    private Integer amount;
-    private float totalCoast;
+    private final Integer amount;
+    private final float totalCoast;
 
     public Recipe(String recipeName, Set<Product> products,float totalCoast) {
         this(recipeName, products, 1,totalCoast);
@@ -30,8 +31,13 @@ public class Recipe {
         }
         return totalCoast;
     }
-
-
+    public static void addRecipe(Recipe recipe) {
+        if (recipes.contains(recipes)) {
+            throw new RuntimeException("Данный рецепт в списке уже присутствует");
+        }else{
+            recipes.add(recipe);
+        }
+    }
 
     public String getRecipeName() {
         return recipeName;
