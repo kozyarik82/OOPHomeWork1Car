@@ -4,16 +4,14 @@ import java.util.Set;
 
 public class Recipe {
     public static Set<Recipe> recipes = new HashSet<>();
+    private final float totalCoast;
     private final String recipeName;
     private Set<Product> products;
     private final Integer amount;
-    private final float totalCoast;
 
     public Recipe(String recipeName, Set<Product> products,float totalCoast) {
         this(recipeName, products, 1,totalCoast);
-
     }
-
     public Recipe(String recipeName, Set<Product> products, Integer amount,float totalCoast) {
         this.recipeName = recipeName;
         this.products = products;
