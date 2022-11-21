@@ -73,8 +73,8 @@ public class Main {
         Product.markAsBought(banana);
         System.out.println(Product.getProducts());
         System.out.println(banana.getPrice());
-        Recipe salat = new Recipe("салат", Product.getProducts(),2);
-        Recipe borsch = new Recipe("борщь", Product.getProducts(),3);
+        Recipe salat = new Recipe("салат", Product.getProducts(),2,0);
+        Recipe borsch = new Recipe("борщь", Product.getProducts(),3,0);
         HashMap<Recipe,Integer> recipes = new HashMap<>();
         recipes.put(salat,2);
         recipes.put(borsch,3);
@@ -115,7 +115,6 @@ public class Main {
         task2.put(9, "червяк");
         task2.put(1, "весло");
         System.out.println(task2);
-
     }
 
     private static void printInfo(Transport transport) {

@@ -8,15 +8,20 @@ public class Recipe {
     private Integer amount;
     private float totalCoast;
 
-    public Recipe(String recipeName, Set<Product> products) {
-        this(recipeName, products, 1);
+    public Recipe(String recipeName, Set<Product> products,float totalCoast) {
+        this(recipeName, products, 1,totalCoast);
 
     }
 
-    public Recipe(String recipeName, Set<Product> products, Integer amount) {
+    public Recipe(String recipeName, Set<Product> products, Integer amount,float totalCoast) {
         this.recipeName = recipeName;
         this.products = products;
         this.amount = amount;
+        for (Product product : products) {
+            totalCoast = 0;
+            totalCoast += product.getPrice() * this.amount;
+        }
+        this.totalCoast = totalCoast;
     }
     public float calculatePrice() {
         float totalCoast = 0;
